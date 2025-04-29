@@ -1,0 +1,17 @@
+name = "pashusewa"
+main = "src/index.js"
+compatibility_date = "2023-09-01"
+
+# Configure static assets for Pages
+[site]
+bucket = "./public"
+
+# Configure D1 Database
+# Note: Replace the placeholder with your actual D1 database ID after creating it
+# Run: wrangler d1 create pashusewa
+# Then update this file with the database ID
+[[d1_databases]]
+binding = "DB"
+database_name = "pashusewa"
+database_id = "YOUR_DATABASE_ID"
+preview_database_id = "YOUR_DATABASE_ID"
