@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="256" fill="#4CAF50" opacity="0.1"/>
+  
+  <!-- Paw Print -->
+  <g transform="translate(96, 96) scale(0.8)">
+    <!-- Main Paw Pad -->
+    <ellipse cx="200" cy="266" rx="70" ry="60" fill="#4CAF50"/>
+    
+    <!-- Top Left Toe -->
+    <circle cx="140" cy="180" r="40" fill="#4CAF50"/>
+    
+    <!-- Top Right Toe -->
+    <circle cx="260" cy="180" r="40" fill="#4CAF50"/>
+    
+    <!-- Bottom Left Toe -->
+    <circle cx="120" cy="230" r="35" fill="#4CAF50"/>
+    
+    <!-- Bottom Right Toe -->
+    <circle cx="280" cy="230" r="35" fill="#4CAF50"/>
+  </g>
+  
+  <!-- Medical Cross -->
+  <g transform="translate(160, 160) scale(0.5)">
+    <rect x="180" y="100" width="40" height="200" rx="10" fill="#F57C00"/>
+    <rect x="100" y="180" width="200" height="40" rx="10" fill="#F57C00"/>
+  </g>
+  
+  <!-- Text: PASHUSEWA -->
+  <text x="256" y="420" font-family="Arial" font-weight="bold" font-size="32" text-anchor="middle" fill="#388E3C">PASHUSEWA</text>
+</svg>
