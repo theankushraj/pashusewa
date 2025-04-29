@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PashuSewa - NGO Panel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container admin-container">
+    <header>
+      <div class="logo">
+        <h1>PashuSewa - NGO Panel</h1>
+      </div>
+      <p>Showing animal reports in your vicinity</p>
+      <a href="index.html" class="admin-link">Back to User Interface</a>
+    </header>
+
+    <main>
+      <section class="filter-section">
+        <h2>Nearby Animal Reports</h2>
+        <div class="location-settings">
+          <button id="updateLocationBtn" class="btn small-btn">Update My Location</button>
+          <span id="currentLocation">Fetching your location...</span>
+          <input type="hidden" id="adminLatitude">
+          <input type="hidden" id="adminLongitude">
+          <input type="number" id="radiusInput" min="1" max="50" value="10" class="radius-input">
+          <label for="radiusInput">km radius</label>
+        </div>
+        <div class="filters">
+          <button class="filter-btn active" data-status="all">All Reports</button>
+          <button class="filter-btn" data-status="Pending">Pending</button>
+          <button class="filter-btn" data-status="In Progress">In Progress</button>
+          <button class="filter-btn" data-status="Resolved">Resolved</button>
+        </div>
+      </section>
+
+      <section class="reports-table-section">
+        <div class="table-responsive">
+          <table id="reportsTable" class="reports-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Location</th>
+                <th>Distance</th>
+                <th>Note</th>
+                <th>Timestamp</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="reportsTableBody">
+              <tr>
+                <td colspan="7" class="loading-cell">Loading reports...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 PashuSewa | NGO Panel</p>
+    </footer>
+  </div>
+
+  <!-- Status Update Modal -->
+  <div id="statusModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Update Report Status</h2>
+      <form id="updateStatusForm">
+        <input type="hidden" id="reportId">
+        <div class="form-group">
+          <label for="statusSelect">New Status:</label>
+          <select id="statusSelect" required>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn secondary-btn close-modal-btn">Cancel</button>
+          <button type="submit" class="btn primary-btn">Update Status</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
