@@ -68,6 +68,7 @@ updateStatusForm.addEventListener('submit', async (e) => {
   
   try {
     console.log('Updating status with:', { id: reportId, status });
+    console.log('API URL:', `${API_BASE_URL}/api/update-status`);
     
     const response = await fetch(`${API_BASE_URL}/api/update-status`, {
       method: 'POST',
@@ -77,6 +78,9 @@ updateStatusForm.addEventListener('submit', async (e) => {
       body: JSON.stringify({ id: reportId, status }),
     });
     
+    console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers);
+    
     if (response.ok) {
       const result = await response.json();
       console.log('Status update result:', result);
@@ -84,9 +88,16 @@ updateStatusForm.addEventListener('submit', async (e) => {
       closeModal();
       loadReports();
     } else {
-      const error = await response.json();
-      console.error('Status update error:', error);
-      alert(`Error: ${error.message || 'Failed to update status'}`);
+      const errorText = await response.text();
+      console.error('Status update error - Response status:', response.status);
+      console.error('Status update error - Response text:', errorText);
+      
+      try {
+        const error = JSON.parse(errorText);
+        alert(`Error: ${error.message || 'Failed to update status'}`);
+      } catch (parseError) {
+        alert(`Error: HTTP ${response.status} - ${errorText || 'Failed to update status'}`);
+      }
     }
   } catch (error) {
     console.error('Error updating status:', error);
@@ -267,11 +278,17 @@ function displayReports(reports) {
       <td>${formattedDate}</td>
       <td><span class="${statusClass}">${report.status}</span></td>
       <td>
-        <button class="action-btn" onclick="openStatusModal(${report.id}, '${report.status}')">
+        <button class="action-btn" data-report-id="${report.id}" data-current-status="${report.status}">
           Update Status
         </button>
       </td>
     `;
+    
+    // Add event listener for the update status button
+    const updateButton = row.querySelector('.action-btn');
+    updateButton.addEventListener('click', () => {
+      openStatusModal(report.id, report.status);
+    });
     
     reportsTableBody.appendChild(row);
   });
