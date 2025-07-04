@@ -3,6 +3,8 @@ type = "javascript-esm"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
+account_id = "59955eb55ce55a99253f92941f0eb56a"
+
 # Configure D1 Database
 [[d1_databases]]
 binding = "DB"
