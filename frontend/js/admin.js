@@ -105,6 +105,15 @@ updateStatusForm.addEventListener('submit', async (e) => {
   }
 });
 
+// Add event listener for status update buttons
+document.querySelectorAll('.update-status-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    const reportId = e.currentTarget.dataset.reportId;
+    reportIdInput.value = reportId;
+    statusModal.style.display = 'block';
+  });
+});
+
 // Close modal handlers
 closeModalButtons.forEach(button => {
   button.addEventListener('click', closeModal);
