@@ -1,9 +1,0 @@
-{
-  "name": "pashusewa-frontend",
-  "version": "1.0.0",
-  "description": "PashuSewa Frontend",
-  "main": "index.html",
-  "scripts": {
-    "build": "echo 'No build step required'"
-  }
-}
