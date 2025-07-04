@@ -1,24 +1,22 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+export default {
+  async fetch(request) {
+    try {
+      const url = new URL(request.url)
+      const path = url.pathname
 
-async function handleRequest(request) {
-  try {
-    const url = new URL(request.url)
-    const path = url.pathname
+      if (path === '/api/reports') {
+        return getReports()
+      } else if (path === '/api/report') {
+        return createReport(request)
+      } else if (path === '/api/update-status') {
+        return updateStatus(request)
+      }
 
-    if (path === '/api/reports') {
-      return getReports()
-    } else if (path === '/api/report') {
-      return createReport(request)
-    } else if (path === '/api/update-status') {
-      return updateStatus(request)
+      return new Response('Not Found', { status: 404 })
+    } catch (error) {
+      console.error('Error:', error)
+      return new Response('Internal Server Error', { status: 500 })
     }
-
-    return new Response('Not Found', { status: 404 })
-  } catch (error) {
-    console.error('Error:', error)
-    return new Response('Internal Server Error', { status: 500 })
   }
 }
 

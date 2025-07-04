@@ -1,9 +1,10 @@
-name = "pashusewa-backend"
+name = "pashusewa"
+type = "javascript-esm"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
 # Configure D1 Database
 [[d1_databases]]
 binding = "DB"
-database_name = "pashusewa"
+database_name = "pashusewa-db"
 database_id = "1a99bb16-26a1-4f62-bd23-efa3f1eb8174"
