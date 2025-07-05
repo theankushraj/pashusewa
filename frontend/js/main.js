@@ -19,10 +19,12 @@ const newReportBtn = document.getElementById('newReportBtn');
 const reportsContainer = document.getElementById('reportsContainer');
 
 // Constants - Use API_URL from config.js
-const API_BASE_URL = typeof API_URL !== 'undefined' ? API_URL : '';  // Fallback to relative paths if not defined
+const API_BASE_URL = typeof API_URL !== 'undefined' ? API_URL : '';
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded, starting initialization...');
+  console.log('API_BASE_URL:', API_BASE_URL);
   fetchLocation();
   loadRecentReports();
 });
@@ -101,6 +103,7 @@ function handleImageUpload(event) {
  */
 async function handleReportSubmission(event) {
   event.preventDefault();
+  console.log('Form submitted');
   
   // Validate form
   if (!imageUpload.files[0]) {
@@ -118,6 +121,7 @@ async function handleReportSubmission(event) {
   const file = imageUpload.files[0];
   const note = document.getElementById('note').value;
   
+  console.log('Converting image to base64...');
   // Convert image to base64
   const base64Image = await convertImageToBase64(file);
   
@@ -129,9 +133,11 @@ async function handleReportSubmission(event) {
     note: note,
     created_at: new Date().toISOString()
   };
+  console.log('Report object created:', report);
   
   // Submit report to API
   try {
+    console.log('Submitting to API:', `${API_BASE_URL}/api/report`);
     const response = await fetch(`${API_BASE_URL}/api/report`, {
       method: 'POST',
       headers: {
@@ -140,7 +146,10 @@ async function handleReportSubmission(event) {
       body: JSON.stringify(report),
     });
     
+    console.log('API Response:', response.status, response.statusText);
+    
     if (response.ok) {
+      console.log('Report submitted successfully');
       // Show confirmation and reset form
       reportForm.classList.add('hidden');
       confirmationMessage.classList.remove('hidden');
@@ -186,15 +195,21 @@ function convertImageToBase64(file) {
  */
 async function loadRecentReports() {
   try {
+    console.log('Loading recent reports...');
     reportsContainer.innerHTML = '<div class="loading">Loading recent reports...</div>';
     
-    const response = await fetch(`${API_BASE_URL}/api/reports`);
+    const apiUrl = `${API_BASE_URL}/api/reports`;
+    console.log('Fetching from:', apiUrl);
+    const response = await fetch(apiUrl);
+    
+    console.log('Reports API Response:', response.status, response.statusText);
     
     if (!response.ok) {
-      throw new Error('Failed to fetch reports');
+      throw new Error(`Failed to fetch reports: ${response.status} - ${response.statusText}`);
     }
     
     const reports = await response.json();
+    console.log('Fetched reports:', reports.length);
     
     if (reports.length === 0) {
       reportsContainer.innerHTML = '<p>No reports found.</p>';

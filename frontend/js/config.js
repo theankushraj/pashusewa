@@ -5,4 +5,4 @@
 
 // For Cloudflare Pages with Functions integration, use relative paths
 // The .pages.dev config routes /api/* to the pashusewa function
-const API_URL = '';
+const API_URL = "https://pashusewa.pashusewa-india.workers.dev";
