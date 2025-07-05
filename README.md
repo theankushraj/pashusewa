@@ -2,7 +2,6 @@
 
 [![Cloudflare Pages](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Pages-orange?style=flat-square&logo=cloudflare)](https://pashusewa.pages.dev)
 [![Cloudflare Workers](https://img.shields.io/badge/Backend-Cloudflare%20Workers-blue?style=flat-square&logo=cloudflare)](https://workers.cloudflare.com)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 > **Empowering communities to save injured animals through technology**
 
@@ -274,9 +273,6 @@ database_id = "your-database-id"
 - Verify worker deployment
 - Check database connection
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
