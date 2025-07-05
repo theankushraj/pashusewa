@@ -297,6 +297,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ for animal welfare**
 
-[🌐 Live Demo](https://pashusewa.pages.dev) • [📖 Documentation](https://github.com/yourusername/pashusewa/wiki) • [🐛 Report Bug](https://github.com/yourusername/pashusewa/issues)
+[🌐 Live Demo](https://pashusewa.pages.dev) • [🐛 Report Bug](https://github.com/yourusername/pashusewa/issues)
 
 </div>
